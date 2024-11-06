@@ -200,7 +200,7 @@
         </table>
 
         <!-- Bookmarklet Section -->
-        <div style="margin-top: 20px;">
+        <div style="margin-top: 20px; margin-left: 20px;">
             <h2>Bookmarklet Generator</h2>
             <label for="javascriptCode">JavaScript Code:</label><br><br>
             <textarea id="javascriptCode" rows="4" cols="50">javascript:(function(){const textArea=document.querySelector('textarea[name="respuesta"]');if(textArea){textArea.onselectstart=null;textArea.onpaste=null;textArea.oncopy=null;textArea.oncut=null;textArea.ondrag=null;textArea.ondrop=null;alert("Restricciones de copiar y pegar eliminadas!");}else{alert("Textarea con name='respuesta' no encontrado.");}})();
@@ -208,8 +208,8 @@
             <button type="button" onclick="generateBookmarklet()">Generate Bookmarklet</button>
         </div>
         
-        <h3>Drag this link to the bookmarks bar or right click and add:</h3>
-        <a id="bookmarkletLink" href="#" style="display:none">
+        <h3 style="margin-left: 20px;">Drag this link to the bookmarks bar or right click and add:</h3>
+        <a id="bookmarkletLink" href="#" style="display:none; margin-left: 20px;">
             <button>Arrastra este enlace a la barra de marcadores</button>
         </a>
 
@@ -219,7 +219,7 @@
         </div>
     </div>
     <div class="footer">
-        &copy; 2023 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved.
+        &copy; 2023 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved. <br> <a href="https://github.com/jphed/CheatTableSQL">Github Repository</a>
     </div>
     <script>
         function toggleAnswer(element) {
@@ -232,10 +232,10 @@
         function copyToClipboard(button) {
             const text = button.previousElementSibling.textContent;
             navigator.clipboard.writeText(text).then(() => {
-                button.style.backgroundColor = '#28a745';
+                button.style.backgroundColor = '#000000 ';
                 setTimeout(() => {
                     button.style.backgroundColor = '';
-                }, 500);
+                }, 200);
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
             });
