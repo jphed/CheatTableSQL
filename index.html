@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+        }
+        .footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .copy-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .deploy-btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>BLOQUE #3 CRUD2, JOINS, SUBQ1 </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        What is HTML?
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        HTML stands for HyperText Markup Language. It is used to create web pages.
+                        <button class="copy-btn" onclick="copyToClipboard('HTML stands for HyperText Markup Language. It is used to create web pages.')">Copy</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        What is CSS?
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        CSS stands for Cascading Style Sheets. It is used to style web pages.
+                        <button class="copy-btn" onclick="copyToClipboard('CSS stands for Cascading Style Sheets. It is used to style web pages.')">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        What is JavaScript?
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+
+                <tr class="answer">
+                    <td>
+                        JavaScript is a programming language commonly used in web development.
+                        <button class="copy-btn" onclick="copyToClipboard('JavaScript is a programming language commonly used in web development.')">Copy</button>
+                    </td>
+                </tr>
+                
+                <!-- Add more questions and answers as needed -->
+            </tbody>
+        </table>
+    </div>
+    <div class="footer">
+        &copy; 2023 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved.
+    </div>
+    <script>
+        function toggleAnswer(element) {
+            const nextElement = element.closest('tr').nextElementSibling;
+            if (nextElement && nextElement.classList.contains('answer')) {
+                nextElement.style.display = nextElement.style.display === 'table-row' ? 'none' : 'table-row';
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+        }
+    </script>
+</body>
+</html>
