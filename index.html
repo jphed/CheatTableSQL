@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Buscar preguntas..." onkeyup="filterQuestions()">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search Question..." onkeyup="filterQuestions()">
         <table>
             <thead>
                 <tr>
@@ -134,7 +134,8 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA")<br>AND libros.idcategoria NOT IN (1);
+                        </pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
