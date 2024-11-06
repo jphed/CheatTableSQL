@@ -60,10 +60,19 @@
             border: none;
             border-radius: 5px;
         }
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar preguntas..." onkeyup="filterQuestions()">
         <table>
             <thead>
                 <tr>
@@ -293,21 +302,36 @@ ORDER BY nombre;
             <h2>Tutorial para principiantes</h2>
             <iframe width="640" height="360" src="https://www.youtube.com/embed/hB7CDrVnNCs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        </div>
-        <div class="footer">
-            &copy; 2023 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved.
-        </div>
-        <script>
-            function toggleAnswer(element) {
-                const nextElement = element.closest('tr').nextElementSibling;
-                if (nextElement && nextElement.classList.contains('answer')) {
-                    nextElement.style.display = nextElement.style.display === 'table-row' ? 'none' : 'table-row';
+    </div>
+    <div class="footer">
+        &copy; 2023 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved.
+    </div>
+    <script>
+        function toggleAnswer(element) {
+            const nextElement = element.closest('tr').nextElementSibling;
+            if (nextElement && nextElement.classList.contains('answer')) {
+                nextElement.style.display = nextElement.style.display === 'table-row' ? 'none' : 'table-row';
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text);
+        }
+
+        function filterQuestions() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+
+            rows.forEach(row => {
+                const question = row.querySelector('td').textContent.toLowerCase();
+                if (question.includes(filter)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
                 }
-            }
-        
-            function copyToClipboard(text) {
-                navigator.clipboard.writeText(text);
-            }
-        </script>
+            });
+        }
+    </script>
 </body>
 </html>
