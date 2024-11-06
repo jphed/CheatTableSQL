@@ -24,10 +24,8 @@
                 </tr>
                 <tr class="answer">
                     <td>
-                        INSERT INTO categorias (categoria) VALUES ("NOVELA");
-INSERT INTO categorias (categoria) VALUES ("DRAMA");
-SELECT categoria FROM categorias ORDER BY categoria ASC;
-                        <button class="copy-btn" onclick="copyToClipboard('HTML stands for HyperText Markup Language. It is used to create web pages.')">Copy</button>
+                        <pre>INSERT INTO categorias (categoria) VALUES ("NOVELA");<br>INSERT INTO categorias (categoria) VALUES ("DRAMA");<br>SELECT categoria FROM categorias ORDER BY categoria ASC;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 <tr>
@@ -38,13 +36,8 @@ SELECT categoria FROM categorias ORDER BY categoria ASC;
                 </tr>
                 <tr class="answer">
                     <td>
-                        INSERT INTO autors (nombre, paterno, correo, fnac, sexo, comision)
-VALUES ("PEDRO", "SOLA", "pedrito@gmail.com", "1950-12-30", "H", NULL);
-
-SELECT nombre, paterno, correo, fnac, sexo, comision
-FROM autors
-ORDER BY nombre;
-                        <button class="copy-btn" onclick="copyToClipboard('CSS stands for Cascading Style Sheets. It is used to style web pages.')">Copy</button>
+                        <pre>INSERT INTO autors (nombre, paterno, correo, fnac, sexo, comision)<br>VALUES ("PEDRO", "SOLA", "pedrito@gmail.com", "1950-12-30", "H", NULL);<br><br>SELECT nombre, paterno, correo, fnac, sexo, comision<br>FROM autors<br>ORDER BY nombre;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
 
@@ -57,8 +50,8 @@ ORDER BY nombre;
 
                 <tr class="answer">
                     <td>
-                        SELECT * FROM autors WHERE fnac = (SELECT MIN(fnac) AS fnac FROM autors);
-                        <button class="copy-btn" onclick="copyToClipboard('JavaScript is a programming language commonly used in web development.')">Copy</button>
+                        <pre>SELECT * FROM autors WHERE fnac = (SELECT MIN(fnac) AS fnac FROM autors);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -71,11 +64,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT autors.id, autors.nombre, autors.paterno <br>
-                        FROM autors <br>
-                        INNER JOIN autor_libro ON autors.id = autor_libro.idautor <br>
-                        WHERE autor_libro.idlibro = 6; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT autors.id, autors.nombre, autors.paterno FROM autors INNER JOIN autor_libro ON autors.id = autor_libro.idautor WHERE autor_libro.idlibro = 6;')">Copy</button>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno<br>FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -88,11 +78,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT libros.id, libros.titulo, categorias.categoria, libros.precio <br>
-                        FROM libros <br>
-                        INNER JOIN categorias ON libros.idcategoria = categorias.id <br>
-                        WHERE libros.precio < 300 AND libros.idcategoria = 2; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT libros.id, libros.titulo, categorias.categoria, libros.precio FROM libros INNER JOIN categorias ON libros.idcategoria = categorias.id WHERE libros.precio < 300 AND libros.idcategoria = 2;')">Copy</button>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria, libros.precio<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE libros.precio < 300 AND libros.idcategoria = 2;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -105,10 +92,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT libros.id, libros.titulo, resumens.resumen <br>
-                        FROM libros <br>
-                        INNER JOIN resumens ON libros.id = resumens.idlibro; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT libros.id, libros.titulo, resumens.resumen FROM libros INNER JOIN resumens ON libros.id = resumens.idlibro;')">Copy</button>
+                        <pre>SELECT libros.id, libros.titulo, resumens.resumen<br>FROM libros<br>INNER JOIN resumens ON libros.id = resumens.idlibro;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -121,11 +106,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT libros.id, libros.titulo, categorias.categoria <br>
-                        FROM libros <br>
-                        INNER JOIN categorias ON libros.idcategoria = categorias.id <br>
-                        WHERE libros.idcategoria = 1; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT libros.id, libros.titulo, categorias.categoria FROM libros INNER JOIN categorias ON libros.idcategoria = categorias.id WHERE libros.idcategoria = 1;')">Copy</button>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE libros.idcategoria = 1;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -138,11 +120,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT autors.id, autors.nombre, autors.paterno <br>
-                        FROM autors <br>
-                        INNER JOIN autor_libro ON autors.id = autor_libro.idautor <br>
-                        WHERE autor_libro.idlibro = 2; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT autors.id, autors.nombre, autors.paterno FROM autors INNER JOIN autor_libro ON autors.id = autor_libro.idautor WHERE autor_libro.idlibro = 2;')">Copy</button>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno<br>FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 2;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -155,11 +134,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria <br>
-                        FROM libros <br>
-                        INNER JOIN editorials ON libros.ideditorial = editorials.id <br>
-                        WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1); <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria FROM libros INNER JOIN editorials ON libros.ideditorial = editorials.id WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);')">Copy</button>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -172,10 +148,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT libros.id, libros.titulo, editorials.editorial <br>
-                        FROM libros <br>
-                        INNER JOIN editorials ON libros.ideditorial = editorials.id; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT libros.id, libros.titulo, editorials.editorial FROM libros INNER JOIN editorials ON libros.ideditorial = editorials.id;')">Copy</button>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -188,12 +162,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT autors.id, autors.nombre, autors.paterno <br>
-                        FROM autors <br>
-                        INNER JOIN autor_libro ON autors.id = autor_libro.idautor <br>
-                        INNER JOIN libros ON libros.id = autor_libro.idlibro <br>
-                        WHERE libros.titulo = 'Historia Contemporánea'; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT autors.id, autors.nombre, autors.paterno FROM autors INNER JOIN autor_libro ON autors.id = autor_libro.idautor INNER JOIN libros ON libros.id = autor_libro.idlibro WHERE libros.titulo = "Historia Contemporánea";')">Copy</button>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno<br>FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>INNER JOIN libros ON libros.id = autor_libro.idlibro<br>WHERE libros.titulo = 'Historia Contemporánea';</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -206,10 +176,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        UPDATE autors <br>
-                        SET comision = comision + 0.02; <br>
-                        SELECT * FROM autors; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('UPDATE autors SET comision = comision + 0.02; SELECT * FROM autors;')">Copy</button>
+                        <pre>UPDATE autors<br>SET comision = comision + 0.02;<br>SELECT * FROM autors;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -222,12 +190,8 @@ ORDER BY nombre;
                 
                 <tr class="answer">
                     <td>
-                        SELECT libros.id, libros.titulo, editorials.editorial <br>
-                        FROM libros <br>
-                        INNER JOIN editorials ON libros.ideditorial = editorials.id <br>
-                        WHERE libros.ideditorial IN (2,3) <br>
-                        ORDER BY editorials.editorial, libros.titulo; <br>
-                        <button class="copy-btn" onclick="copyToClipboard('SELECT libros.id, libros.titulo, editorials.editorial FROM libros INNER JOIN editorials ON libros.ideditorial = editorials.id WHERE libros.ideditorial IN (2,3) ORDER BY editorials.editorial, libros.titulo;')">Copy</button>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE libros.ideditorial IN (2,3)<br>ORDER BY editorials.editorial, libros.titulo;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
                 
@@ -250,8 +214,16 @@ ORDER BY nombre;
             }
         }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text);
+        function copyToClipboard(button) {
+            const text = button.previousElementSibling.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                button.style.backgroundColor = '#000000';
+                setTimeout(() => {
+                    button.style.backgroundColor = '';
+                }, 200);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
         }
 
         function filterQuestions() {
