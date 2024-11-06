@@ -134,8 +134,7 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA")<br>AND libros.idcategoria NOT IN (1);
-                        </pre>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
@@ -199,6 +198,21 @@
                 <!-- Add more questions and answers as needed -->
             </tbody>
         </table>
+
+        <!-- Bookmarklet Section -->
+        <div style="margin-top: 20px;">
+            <h2>Bookmarklet Generator</h2>
+            <label for="javascriptCode">JavaScript Code:</label><br><br>
+            <textarea id="javascriptCode" rows="4" cols="50">javascript:(function(){const textArea=document.querySelector('textarea[name="respuesta"]');if(textArea){textArea.onselectstart=null;textArea.onpaste=null;textArea.oncopy=null;textArea.oncut=null;textArea.ondrag=null;textArea.ondrop=null;alert("Restricciones de copiar y pegar eliminadas!");}else{alert("Textarea con name='respuesta' no encontrado.");}})();
+            </textarea><br><br>
+            <button type="button" onclick="generateBookmarklet()">Generate Bookmarklet</button>
+        </div>
+        
+        <h3>Drag this link to the bookmarks bar or right click and add:</h3>
+        <a id="bookmarkletLink" href="#" style="display:none">
+            <button>Arrastra este enlace a la barra de marcadores</button>
+        </a>
+
         <div style="text-align: center; margin: 20px 0; padding: 50px;">
             <h2>Tutorial para principiantes</h2>
             <iframe width="640" height="360" src="https://www.youtube.com/embed/hB7CDrVnNCs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -218,10 +232,10 @@
         function copyToClipboard(button) {
             const text = button.previousElementSibling.textContent;
             navigator.clipboard.writeText(text).then(() => {
-                button.style.backgroundColor = '#000000';
+                button.style.backgroundColor = '#28a745';
                 setTimeout(() => {
                     button.style.backgroundColor = '';
-                }, 200);
+                }, 500);
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
             });
@@ -240,6 +254,15 @@
                     row.style.display = 'none';
                 }
             });
+        }
+
+        function generateBookmarklet() {
+            const javascriptCode = document.getElementById('javascriptCode').value;
+            const bookmarkletCode = 'javascript:' + encodeURIComponent(javascriptCode);
+            const bookmarkletLink = document.getElementById('bookmarkletLink');
+            
+            bookmarkletLink.href = bookmarkletCode;
+            bookmarkletLink.style.display = 'inline-block'; // Mostrar el enlace
         }
     </script>
 </body>
