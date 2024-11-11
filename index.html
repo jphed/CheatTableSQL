@@ -468,7 +468,62 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        ANA MENDEZ ahora también escribe el libro INGLES FACIL
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>INSERT INTO autor_libro (idautor, idlibro)
+                VALUES (2, 4);
+                
+                SELECT idautor, idlibro FROM autor_libro;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
                          
+                <tr>
+                    <td>
+                        JOSE LOPEZ ya no escribe el libro HISTORIA DE MEXICO, ahora lo escribe ANA MENDEZ
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT * FROM autor_libro;
+                
+                UPDATE autor_libro
+                SET idautor = 2
+                WHERE idautor = 1 AND idlibro = 1;
+                
+                SELECT * FROM autor_libro;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Agregar al autor SUSANA
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>INSERT INTO autors (nombre, paterno, correo, fnac, sexo, comision)
+                VALUES ('SUSANA', '', 'susanita@gmail.com', '1990-01-01', 'M', NULL);
+                
+                SELECT nombre, correo FROM autors
+                ORDER BY nombre ASC;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                
                 
                 
                 <tr>
@@ -480,10 +535,16 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>INSERT INTO libros (titulo, precio, paginas, top100, ideditorial, idcategoria)<br>VALUES ("ULSA CHIHUAHUA", 150.00, 200, 0, 1, 2);<br><br>SELECT titulo, precio <br>FROM libros<br>ORDER BY titulo ASC;</pre>
+                        <pre>INSERT INTO libros (titulo, precio, paginas, top100, ideditorial, idcategoria)
+                VALUES ("ULSA CHIHUAHUA", 150.00, 200, 0, 1, 2);
+                
+                SELECT titulo, precio 
+                FROM libros
+                ORDER BY titulo ASC;</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
 
                 <tr>
                     <td>
