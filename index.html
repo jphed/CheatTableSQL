@@ -484,6 +484,56 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        El libro HISTORIA DE MEXICO ahora es de la editorial PLANETA y de PROGRAMACION
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>UPDATE libros
+                SET ideditorial = 2, idcategoria = 2
+                WHERE id = 1;
+                
+                SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria FROM libros WHERE id = 1;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros más baratos (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT * FROM libros WHERE precio = (SELECT MIN(precio) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros con más páginas de la editorial PORRUA (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT * 
+                FROM libros 
+                WHERE ideditorial = 1
+                AND paginas = (SELECT MAX(paginas) 
+                               FROM libros 
+                               WHERE ideditorial = 1);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
                 
                          
                 <tr>
