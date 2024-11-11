@@ -404,6 +404,24 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros de la editorial PLANETA que tiene un precio mayor a $200
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT l.id, l.titulo, l.precio, e.editorial
+                FROM libros l
+                JOIN editorials e ON l.ideditorial = e.id
+                WHERE e.editorial = 'PLANETA' AND l.precio > 200;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
                 
                 
                 
@@ -444,10 +462,13 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision<br>FROM autors<br>WHERE comision = (SELECT MIN(comision) FROM autors WHERE comision IS NOT NULL);</pre>
+                        <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision
+                FROM autors
+                WHERE comision = (SELECT MIN(comision) FROM autors WHERE comision IS NOT NULL);</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
-                </tr>                
+                </tr>
+                         
                 
                 
                 <tr>
