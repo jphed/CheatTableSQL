@@ -57,20 +57,6 @@
                 
                 <tr>
                     <td>
-                        Seleccionar los autores que escribieron el libro de JAVA (Usar JOIN)
-                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
-                    </td>
-                </tr>
-                
-                <tr class="answer">
-                    <td>
-                        <pre>SELECT autors.id, autors.nombre, autors.paterno<br>FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
-                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
                         Seleccionar los libros de PROGRAMACION con un precio menor a $300
                         <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
                     </td>
@@ -162,10 +148,11 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT autors.id, autors.nombre, autors.paterno<br>FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>INNER JOIN libros ON libros.id = autor_libro.idlibro<br>WHERE libros.titulo = 'Historia Contemporánea';</pre>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno <br>FROM autors <br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor <br>INNER JOIN libros ON libros.id = autor_libro.idlibro <br>WHERE libros.titulo = 'Historia Contemporánea';</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
                 
                 <tr>
                     <td>
@@ -302,10 +289,11 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT autors.id, autors.nombre, autors.paterno FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno<br>FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
                 
                 <tr>
                     <td>
@@ -317,20 +305,6 @@
                 <tr class="answer">
                     <td>
                         <pre>SELECT * FROM autors WHERE fnac = (SELECT MIN(fnac) FROM autors WHERE sexo = "M");</pre>
-                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
-                        Seleccionar los autores que escribieron el libro de JAVA (Usar JOIN)
-                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
-                    </td>
-                </tr>
-                
-                <tr class="answer">
-                    <td>
-                        <pre>SELECT autors.id, autors.nombre, autors.paterno FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
@@ -358,7 +332,50 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision FROM autors<br>WHERE comision = (SELECT MIN(comision) FROM autors);</pre>
+                        <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision<br>FROM autors<br>WHERE comision = (SELECT MIN(comision) FROM autors WHERE comision IS NOT NULL);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                
+                <tr>
+                    <td>
+                        Agregar el libro “ULSA CHIHUAHUA”
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>INSERT INTO libros (titulo, precio, paginas, top100, ideditorial, idcategoria)<br>VALUES ("ULSA CHIHUAHUA", 150.00, 200, 0, 1, 2);<br><br>SELECT titulo, precio <br>FROM libros<br>ORDER BY titulo ASC;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros cuyo precio sea mayor al precio promedio (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE precio > (SELECT AVG(precio) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar el autor más viejo (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision<br>FROM autors<br>WHERE fnac = (SELECT MIN(fnac) FROM autors);</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
