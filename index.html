@@ -55,19 +55,6 @@
                     </td>
                 </tr>
                 
-                <tr>
-                    <td>
-                        Seleccionar los libros de PROGRAMACION con un precio menor a $300
-                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
-                    </td>
-                </tr>
-                
-                <tr class="answer">
-                    <td>
-                        <pre>SELECT libros.id, libros.titulo, categorias.categoria, libros.precio<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE libros.precio < 300 AND libros.idcategoria = 2;</pre>
-                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    </td>
-                </tr>
                 
                 <tr>
                     <td>
@@ -110,6 +97,35 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros más baratos (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE precio = (SELECT MIN(precio) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros de HISTORIA que sean top100 y sean de la editorial PORRUA
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria, libros.top100, libros.ideditorial<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE categorias.categoria = 'HISTORIA'<br>  AND libros.top100 = 1<br>  AND libros.ideditorial = (SELECT id FROM editorials WHERE editorial = 'PORRUA');</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
                 
                 
                 <tr>
@@ -178,10 +194,15 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT libros.id, libros.titulo, categorias.categoria, libros.precio<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE libros.precio &lt; 300 AND libros.idcategoria = 2;</pre>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria, libros.precio<br>
+                FROM libros<br>
+                INNER JOIN categorias ON libros.idcategoria = categorias.id<br>
+                WHERE libros.precio &lt; 300 <br>
+                  AND libros.idcategoria = 2;</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
                 
                 <tr>
                     <td>
@@ -323,7 +344,7 @@
                         <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision<br>FROM autors<br>WHERE comision = (SELECT MIN(comision) FROM autors WHERE comision IS NOT NULL);</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
-                </tr>
+                </tr>                
                 
                 
                 <tr>
