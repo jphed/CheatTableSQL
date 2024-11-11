@@ -194,6 +194,161 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros de PROGRAMACION con un precio menor a $300
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria, libros.precio<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE libros.precio &lt; 300 AND libros.idcategoria = 2;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Borrar a JOSE LOPEZ
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>DELETE FROM autor_libro WHERE idautor = 1;<br>DELETE FROM autors<br>WHERE id = 1;<br>SELECT * FROM autors;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, resumens.resumen FROM libros<br>INNER JOIN resumens ON libros.id = resumens.idlibro;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE libros.idcategoria = 1;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los autores que escribieron AVENTURAS EN LA SELVA (Usar JOIN)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 2;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros de la editorial PORRUA que no son de HISTORIA
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los autores que escribieron el libro de JAVA (Usar JOIN)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar el autor más viejo MUJER (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT * FROM autors WHERE fnac = (SELECT MIN(fnac) FROM autors WHERE sexo = "M");</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los autores que escribieron el libro de JAVA (Usar JOIN)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT autors.id, autors.nombre, autors.paterno FROM autors<br>INNER JOIN autor_libro ON autors.id = autor_libro.idautor<br>WHERE autor_libro.idlibro = 6;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Seleccionar los libros de editorial PORRUA y PLANETA
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>UPDATE libros<br>SET ideditorial = 1<br>WHERE id = 8;<br>UPDATE libros<br>SET ideditorial = 2<br>WHERE id = 10;<br>SELECT libros.id, libros.titulo, editorials.editorial FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE libros.ideditorial IN (1,2) AND libros.idcategoria IN (1,2) ORDER BY editorials.editorial;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
                 
                 <!-- Add more questions and answers as needed -->
             </tbody>
