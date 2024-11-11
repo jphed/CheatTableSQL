@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <td>
-                        1. Agregar las categorias NOVELA y DRAMA
+                        Agregar las categorias NOVELA y DRAMA
                         <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
                     </td>
                 </tr>
@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>
-                        2. Agregar al autor PEDRO
+                        Agregar al autor PEDRO
                         <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
                     </td>
                 </tr>
@@ -43,7 +43,7 @@
 
                 <tr>
                     <td>
-                        3. Seleccionar el autor más viejo (Usar subquerys)
+                        Seleccionar el autor más viejo (Usar subquerys)
                         <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
                     </td>
                 </tr>
@@ -348,6 +348,21 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar el autor que tiene la menor comisión (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, nombre, paterno, correo, fnac, sexo, comision FROM autors<br>WHERE comision = (SELECT MIN(comision) FROM autors);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
                 
                 
                 <!-- Add more questions and answers as needed -->
@@ -374,7 +389,7 @@
         </div>
     </div>
     <div class="footer">
-        &copy; 2023 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved. <br> <a href="https://github.com/jphed/CheatTableSQL">Github Repository</a>
+        &copy; 2024 <a href="https://github.com/jphed" target="_blank">jphed</a>. All rights reserved. <br> <a href="https://github.com/jphed/CheatTableSQL">Github Repository</a>
     </div>
     <script>
         function toggleAnswer(element) {
