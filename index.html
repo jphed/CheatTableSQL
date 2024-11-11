@@ -380,6 +380,64 @@
                     </td>
                 </tr>
                 
+                <tr>
+                    <td>
+                        Seleccionar los libros cuyo precio sea menor al precio promedio (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE precio < (SELECT AVG(precio) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros con más páginas (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE paginas = (SELECT MAX(paginas) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros de PROGRAMACION, INFANTIL y TERROR
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT libros.id, libros.titulo, categorias.categoria<br>FROM libros<br>INNER JOIN categorias ON libros.idcategoria = categorias.id<br>WHERE categorias.categoria IN ('PROGRAMACION', 'INFANTIL', 'TERROR')<br>ORDER BY FIELD(categorias.categoria, 'INFANTIL', 'PROGRAMACION', 'TERROR');</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Borrar el libro JAVA AVANZADO
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>DELETE FROM autor_libro WHERE idlibro = 10;<br><br>
+                DELETE FROM resumens WHERE idlibro = 10;<br><br>
+                DELETE FROM libros WHERE id = 10;<br><br>
+                SELECT id, titulo, precio FROM libros;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
                 
                 
                 <!-- Add more questions and answers as needed -->
