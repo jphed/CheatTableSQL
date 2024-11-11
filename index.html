@@ -533,6 +533,37 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros con menos páginas (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria
+                FROM libros
+                WHERE paginas = (SELECT MIN(paginas) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        JOSE LOPEZ ya no escribe el libro AVENTURAS EN LA SELVA
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                <tr class="answer">
+                    <td>
+                        <pre>DELETE FROM autor_libro
+                WHERE idautor = 1 AND idlibro = 2;
+                
+                SELECT * FROM autor_libro;</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
                 
                 
                          
