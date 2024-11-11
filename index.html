@@ -111,19 +111,6 @@
                     </td>
                 </tr>
                 
-                <tr>
-                    <td>
-                        Seleccionar los libros de la editorial PORRUA que no son de HISTORIA
-                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
-                    </td>
-                </tr>
-                
-                <tr class="answer">
-                    <td>
-                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
-                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    </td>
-                </tr>
                 
                 <tr>
                     <td>
@@ -261,10 +248,11 @@
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
+                        <pre>SELECT libros.id, libros.titulo, editorials.editorial, libros.idcategoria<br>FROM libros<br>INNER JOIN editorials ON libros.ideditorial = editorials.id<br>WHERE editorials.editorial IN ("PORRUA") AND libros.idcategoria NOT IN (1);</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
                 
                 <tr>
                     <td>
@@ -354,17 +342,18 @@
 
                 <tr>
                     <td>
-                        Seleccionar los libros cuyo precio sea mayor al precio promedio (Usar subquerys)
+                        Seleccionar los libros más caros (Usar subquerys)
                         <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
                     </td>
                 </tr>
                 
                 <tr class="answer">
                     <td>
-                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE precio > (SELECT AVG(precio) FROM libros);</pre>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE precio = (SELECT MAX(precio) FROM libros);</pre>
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+                
                 
                 <tr>
                     <td>
@@ -438,6 +427,21 @@
                         <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>
+                        Seleccionar los libros más caros (Usar subquerys)
+                        <button class="deploy-btn" onclick="toggleAnswer(this)">Show Answer</button>
+                    </td>
+                </tr>
+                
+                <tr class="answer">
+                    <td>
+                        <pre>SELECT id, titulo, paginas, precio, top100, ideditorial, idcategoria<br>FROM libros<br>WHERE precio = (SELECT MAX(precio) FROM libros);</pre>
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    </td>
+                </tr>
+                
                 
                 
                 <!-- Add more questions and answers as needed -->
