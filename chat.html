@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - CheatTableSQL</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+    <div class="container">
+        <h1>CheatTableSQL Chat Request</h1>
+        <form id="chatForm">
+            <label for="sqlQuestion">SQL Question:</label>
+            <textarea id="sqlQuestion" name="sqlQuestion" rows="4" placeholder="Enter your SQL question here..."></textarea>
+
+            <label for="sqlQueryResult">SQL Query Expected Result:</label>
+            <textarea id="sqlQueryResult" name="sqlQueryResult" rows="4" placeholder="Enter the expected result of the SQL query here..."></textarea>
+
+            <label for="sqlDatabaseScript">SQL Database Script:</label>
+            <textarea id="sqlDatabaseScript" name="sqlDatabaseScript" rows="10" placeholder="Paste your SQL database script here..."></textarea>
+
+            <button type="button" id="copyButton">Copy All</button>
+            <button type="button" id="openButton" class="blue-btn">Copy Database</button>
+            <button type="button" id="clearButton" class="blue-btn">Clear</button>
+            <button type="button" id="backButton" class="blue-btn">Go Back</button>
+        </form>
+    </div>
+
+    <script>
+        // Copy all text areas content to clipboard
+        document.getElementById('copyButton').addEventListener('click', () => {
+            const sqlQuestion = document.getElementById('sqlQuestion').value;
+            const sqlQueryResult = document.getElementById('sqlQueryResult').value;
+            const sqlDatabaseScript = document.getElementById('sqlDatabaseScript').value;
+
+            const allText = `SQL Question:\n${sqlQuestion}\n\nSQL Query Expected Result:\n${sqlQueryResult}\n\nSQL Database Script:\n${sqlDatabaseScript}`;
+
+            navigator.clipboard.writeText(allText).then(() => {
+                alert('Copied to clipboard!');
+            });
+        });
+
+        // Copy the provided SQL script to clipboard
+        document.getElementById('openButton').addEventListener('click', () => {
+            const sqlScript = `-- MODELO FISICO BASE DE DATOS LIBROS
+
+DROP DATABASE IF EXISTS libros;
+
+CREATE DATABASE libros CHARSET=utf8 COLLATE=utf8_spanish_ci;
+USE libros;
+
+-- Tabla de categorias
+
+CREATE TABLE categorias (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  categoria VARCHAR(50) NOT NULL,
+  UNIQUE(categoria)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO categorias (id, categoria) VALUES
+(1, 'HISTORIA'),
+(2, 'PROGRAMACION'),
+(3, 'INFANTIL'),
+(4, 'TERROR'),
+(5, 'IDIOMAS'),
+(6, 'CIENCIA FICCION');
+
+-- Tabla de editorials--------------------------------------
+
+CREATE TABLE editorials (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  editorial VARCHAR(50) NOT NULL,
+  UNIQUE(editorial)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO editorials (id, editorial) VALUES
+(1, 'PORRUA'),
+(2, 'PLANETA'),
+(3, 'SIGLO XXI'),
+(4, 'ALFAOMEGA'),
+(5, 'APRESS');
+
+-- Tabla de libros ------------------------------------
+
+CREATE TABLE libros (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(50) NOT NULL,
+  paginas SMALLINT UNSIGNED NOT NULL,
+  precio DECIMAL(6,2) UNSIGNED NOT NULL,
+  top100 BOOLEAN NOT NULL DEFAULT 0,
+  ideditorial INT UNSIGNED NOT NULL,
+  idcategoria INT UNSIGNED NOT NULL,
+
+  INDEX (ideditorial),
+  INDEX (idcategoria),
+
+  FOREIGN KEY (ideditorial) 
+    REFERENCES editorials (id) 
+    ON UPDATE RESTRICT 
+    ON DELETE RESTRICT,
+
+  FOREIGN KEY (idcategoria) 
+    REFERENCES categorias (id) 
+    ON UPDATE RESTRICT 
+    ON DELETE RESTRICT
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO libros (id, titulo, paginas, precio, top100, ideditorial, idcategoria) VALUES
+(1, 'HISTORIA DE MEXICO', 250, '150.00', 1, 1, 1),
+(2, 'AVENTURAS EN LA SELVA', 120, '175.00', 0, 1, 3),
+(3, 'CUENTOS INFANTILES', 25, '100.00', 0, 1, 3),
+(4, 'INGLES FACIL', 100, '200.00', 1, 2, 5),
+(5, 'LA BRUJA', 115, '100.00', 1, 3, 4),
+(6, 'JAVA', 200, '250.00', 1, 2, 2),
+(7, 'PHP Y MYSQL', 200, '280.00', 1, 2, 2),
+(8, 'LA REVOLUCION MEXICANA', 300, '199.00', 1, 3, 1),
+(9, 'HISTORIA CONTEMPORANEA', 280, '500.00', 0, 1, 1),
+(10, 'JAVA AVANZADO', 300, '450.00', 0, 1, 2);
+
+-- Tabla de resumens -------------------------------------------
+
+CREATE TABLE resumens (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  resumen VARCHAR(1000) NOT NULL,
+  idlibro INT UNSIGNED NOT NULL,
+  INDEX (idlibro),
+  UNIQUE (idlibro),
+
+  FOREIGN KEY (idlibro) 
+    REFERENCES libros (id) 
+    ON UPDATE RESTRICT 
+    ON DELETE RESTRICT
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO resumens (id, resumen, idlibro) VALUES
+(1, 'RESUMEN HISTORIA DE MEXICO', 1),
+(2, 'RESUMEN AVENTURAS EN LA SELVA', 2),
+(3, 'RESUMEN CUENTOS INFANTILES', 3),
+(4, 'RESUMEN LA BRUJA', 5),
+(5, 'RESUMEN JAVA', 6),
+(6, 'RESUMEN PHP Y MYSQL', 7),
+(7, 'RESUMEN HISTORIA CONTEMPORANEA', 9),
+(8, 'RESUMEN JAVA AVANZADO', 10);
+
+-- Tabla de autors
+CREATE TABLE autors (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(30) NOT NULL,
+  paterno VARCHAR(30) NOT NULL,
+  correo VARCHAR(60) NOT NULL,
+  fnac DATE NOT NULL,
+  sexo CHAR(1) NOT NULL,
+  comision DECIMAL(3,2) UNSIGNED DEFAULT NULL,
+  UNIQUE(correo)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO autors (id, nombre, paterno, correo, fnac, sexo, comision) VALUES
+(1, 'JOSE', 'LOPEZ', 'jose@gmail.com', '1970-05-25', 'H', NULL),
+(2, 'ANA', 'MENDEZ', 'ana@yahoo.com', '1980-01-16', 'M', NULL),
+(3, 'ANTONIO', 'QUEZADA', 'antonio@gmail.com', '1985-01-30', 'H', '0.00'),
+(4, 'MARIA', 'LOPEZ', 'maria@gmail.com', '2000-02-10', 'M', '2.75'),
+(5, 'FRANCISCO', 'RODRIGUEZ', 'francisco@yahoo.com', '1995-08-15', 'H', NULL),
+(6, 'FERNANDO', 'PEREZ', 'fernando@hotmail.com', '1990-05-16', 'H', '1.00'),
+(7, 'ROCIO', 'QUEZADA', 'rocio@gmail.com', '1971-01-10', 'M', '2.50');
+
+-- Tabla autor_libro --------------------------------
+
+CREATE TABLE autor_libro (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  idautor INT UNSIGNED NOT NULL,
+  idlibro INT UNSIGNED NOT NULL,
+  
+  INDEX(idautor),
+  INDEX(idlibro),
+  UNIQUE(idautor, idlibro),
+
+  FOREIGN KEY (idautor) 
+    REFERENCES autors (id) 
+    ON UPDATE RESTRICT 
+    ON DELETE RESTRICT,
+
+  FOREIGN KEY (idlibro) 
+    REFERENCES libros (id) 
+    ON UPDATE RESTRICT 
+    ON DELETE RESTRICT
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+INSERT INTO autor_libro (id, idautor, idlibro) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 2),
+(4, 3, 3),
+(5, 5, 4),
+(6, 6, 4),
+(7, 4, 5),
+(8, 1, 6),
+(9, 2, 6),
+(10, 3, 6),
+(11, 5, 7),
+(12, 6, 7),
+(13, 1, 8),
+(14, 2, 9),
+(15, 3, 9),
+(16, 4, 10),
+(17, 5, 10);`;
+
+            navigator.clipboard.writeText(sqlScript).then(() => {
+                alert('SQL Script copied to clipboard!');
+            });
+        });
+
+        // Clear all text areas
+        document.getElementById('clearButton').addEventListener('click', () => {
+            document.getElementById('sqlQuestion').value = '';
+            document.getElementById('sqlQueryResult').value = '';
+            document.getElementById('sqlDatabaseScript').value = '';
+        });
+
+        // Go back to index.html
+        document.getElementById('backButton').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
