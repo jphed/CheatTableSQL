@@ -206,7 +206,9 @@ INSERT INTO autor_libro (id, idautor, idlibro) VALUES
 (14, 2, 9),
 (15, 3, 9),
 (16, 4, 10),
-(17, 5, 10);`;
+(17, 5, 10);
+
+Orden: pasame el query en 1 solo bloque de texto, incluyendo los cambios y el select al final`;
 
             navigator.clipboard.writeText(sqlScript).then(() => {
                 alert('SQL Script copied to clipboard!');
